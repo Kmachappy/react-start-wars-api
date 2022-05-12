@@ -1,40 +1,6 @@
 .App {
   text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 header{
@@ -43,10 +9,59 @@ header{
   justify-content: center;
   align-items: center;
   margin: 0%;
-  height: 5vmin;
-  /* width: 100%; */
+  height: 5vmax;
   background-color: #282c34;
+}
+header> a{
+  color: white;
+  text-decoration: none;
+}
+header>a:hover{
+  color:cadetblue;
 }
 header > h1 {
   margin: 0;
+}
+.search-container{
+  margin: 1vmax;
+  /* width: 100%; */
+}
+input{
+ text-align: center;
+ width: 20vmax;
+ height: 50px;
+ font-size: 1.4em;
+}
+
+.starships-container{
+  margin-top:2vmax;
+  width: 100vmin;
+  display: grid;
+  gap: 1vmax;
+  grid-template: repeat(3,1fr)/ repeat(4,1fr);
+  /* border: 1px solid red; */
+  margin: 0 auto;
+
+  /* display: flex; */
+  /* justify-content: center ; */
+  /* align-items: center; */
+  /* flex-wrap: wrap; */
+  /* width: 95vmax; */
+}
+.starship-card > h1{
+  margin: 0;
+}
+
+.starship-card{
+  margin: .5vmax;
+  color: white;
+  background-color: #325050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  /* width: 260px; */
+  border: 1px solid #325050;
+  border-radius: 10px;
+  
 }
