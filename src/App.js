@@ -3,38 +3,40 @@ import {useState, useEffect} from 'react'
 import Starships from './components/Starships';
 import Header from './components/Header';
 import Search from './components/Search';
-
+import Buttons from './components/Buttons'
 
 
 function App() {
-  
+
   const [starShips, setStarships] = useState(null)
-  
-  const getStarships = async () =>{
-    const response = await fetch("https://swapi.dev/api/starships/")
+  const [links, setLinks] = useState({})
+  console.log(links)
+
+
+  const getStarships = async (url = "https://swapi.dev/api/starships/?page=1") =>{
+    const response = await fetch(url)
     const starshipsData = await response.json()
-    // console.log(starshipsData.results)
     setStarships(starshipsData.results)
+    setLinks({
+      previous:starshipsData.previous,
+      next:starshipsData.next
+    })
   }
 
   const searchShips = (searchTerm)=>{
-    console.log("inside searchship",searchTerm)
-    let ship;
     if(searchTerm === ""){
       getStarships()
     }else{
-    console.log("before filter ship name",starShips[5].name.toLowerCase())
-    // ship = starships.filter(ship=> (ship.name == searchTerm))
-    ship = starShips.filter(ship=> ship.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    // console.log("this is ship", ship)
+    let ship = starShips.filter(ship=> ship.name.toLowerCase().includes(searchTerm.toLowerCase()))
       setStarships(ship)
     }
-  }
+  }  
 
   useEffect(()=>{getStarships()}, [])
   return (
     <div className="App">
       <Header/>
+      <Buttons getStarships={getStarships} links={links}/>
       <Search searchShips={searchShips}/>
       <Starships starships={starShips}/>
     </div>
